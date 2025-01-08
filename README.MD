@@ -9,3 +9,5 @@ Start animation with: /badapple (frames). Example: /badapple 8
 > And https://www.spigotmc.org/resources/noteblockapi.19287/
 
 <img src=".github/example.png">
+
+Video: https://www.youtube.com/watch?v=xpfXrTwTZLU
