@@ -1,0 +1,9 @@
+name: BadApple
+description: Bad apple for minecraft
+author: iChoco_Milk
+main: site.ichocomilk.badapple.BadApplePlugin
+version: 1.0.0
+
+commands:
+  badapple:
+    description: "Start bad apple"
