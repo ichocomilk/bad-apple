@@ -6,13 +6,13 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import site.ichocomilk.badapple.video.VideoPlayer;
+import site.ichocomilk.badapple.video.VideoFrameTask;
 
 public final class BadAppleStartCommand implements CommandExecutor {
 
-    private final VideoPlayer videoPlayer;
+    private final VideoFrameTask videoPlayer;
 
-    public BadAppleStartCommand(VideoPlayer videoPlayer) {
+    public BadAppleStartCommand(VideoFrameTask videoPlayer) {
         this.videoPlayer = videoPlayer;
     }
 
@@ -32,7 +32,7 @@ public final class BadAppleStartCommand implements CommandExecutor {
         }
         sender.sendMessage("§aPlaying badapple");
         final Location location = player.getLocation();
-        new Thread( () -> videoPlayer.load(location.getBlockX(), location.getBlockY(), location.getBlockZ(), fps)).start();
+        new Thread( () -> videoPlayer.load(location.getBlockX(), location.getBlockY(), location.getBlockZ(), fps, player)).start();
         return true;
     }
 

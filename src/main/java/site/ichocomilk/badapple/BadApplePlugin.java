@@ -4,9 +4,12 @@ import java.io.File;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.xxmicloxx.NoteBlockAPI.songplayer.RadioSongPlayer;
+
 import site.ichocomilk.badapple.command.BadAppleStartCommand;
 import site.ichocomilk.badapple.decoder.FrameDecoder;
-import site.ichocomilk.badapple.video.VideoPlayer;
+import site.ichocomilk.badapple.decoder.MusicDecoder;
+import site.ichocomilk.badapple.video.VideoFrameTask;
 
 public final class BadApplePlugin extends JavaPlugin {
 
@@ -23,7 +26,8 @@ public final class BadApplePlugin extends JavaPlugin {
         }
     
         final FrameDecoder frameDecoder = new FrameDecoder(getDataFolder(), files, getLogger());
-        final VideoPlayer videoPlayer = new VideoPlayer(frameDecoder, getLogger(), this);
+        final RadioSongPlayer radio = MusicDecoder.load(getLogger());
+        final VideoFrameTask videoPlayer = new VideoFrameTask(frameDecoder, getLogger(), this, radio);
 
         getCommand("badapple").setExecutor(new BadAppleStartCommand(videoPlayer));
     }

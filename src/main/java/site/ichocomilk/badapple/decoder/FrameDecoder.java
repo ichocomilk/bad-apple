@@ -25,6 +25,10 @@ public final class FrameDecoder {
         this.logger = logger;
     }
 
+    public int getFilesAmount() {
+        return filesAmount;
+    }
+
     public boolean hasNext() {
         return i++ < filesAmount;
     }
@@ -39,7 +43,7 @@ public final class FrameDecoder {
         return new File(datafolder, i+".jpg");
     }
 
-    public void next(final Consumer<BadAppleFrame> consumer) {
+    public void next(final Consumer<BufferedImage> consumer) {
         final File file = loadNextFile();
         if (!file.exists()) {
             Bukkit.broadcastMessage("The frame " + i + " don't exist");
@@ -62,6 +66,6 @@ public final class FrameDecoder {
         graphics2D.drawImage(image, 0, 0, width, height, null);
         graphics2D.dispose();
 
-        consumer.accept(new BadAppleFrame(resizedImage, width, height));
+        consumer.accept(resizedImage);
     }
 }
